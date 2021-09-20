@@ -19,7 +19,7 @@ const Categories = React.memo(function Categories({
           <li
             className={cn(
               { active: activeItem === index },
-              { discount: index == 4 }
+              { discount: index === 4 }
             )}
             onClick={() => onChangeCategory(index)}
             key={`${name}_${index}`}

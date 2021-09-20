@@ -12,6 +12,8 @@ import {
 } from "../Redux/cart";
 import cartEmptyImage from "../assets/img/empty-cart.png";
 import Modal from "../Сomponents/Modal";
+import { Button } from "../Сomponents";
+import { useHistory } from "react-router-dom";
 
 function Cart() {
   const phoneRegExp = RegExp(
@@ -43,6 +45,7 @@ function Cart() {
   });
 
   const [componentOfModal, setComponentOfModal] = useState(null);
+  const history = useHistory();
 
   const formRef = useRef();
   const [formValues, setFormValues] = useState([]);
@@ -127,7 +130,7 @@ function Cart() {
 
   return (
     <>
-      <div className="container container--cart">
+      <div className="wrapper container--cart">
         {totalCount ? (
           <div className="cart">
             <div className="cart__top">
@@ -317,9 +320,9 @@ function Cart() {
                 )}
               </Formik>
               <div className="cart__bottom-buttons">
-                <Link
-                  to="/"
+                <Button
                   className="button button--outline button--add go-back-btn"
+                  onClick={() => history.goBack()}
                 >
                   <svg
                     width="8"
@@ -337,7 +340,7 @@ function Cart() {
                     />
                   </svg>
                   <span>Вернуться назад</span>
-                </Link>
+                </Button>
                 <button
                   type="submit"
                   onClick={onPayPizzas}
@@ -359,9 +362,12 @@ function Cart() {
               Для того, чтобы заказать пиццу, перейди на главную страницу.
             </p>
             <img src={cartEmptyImage} alt="Empty cart" />
-            <Link to="/" className="button button--black">
+            <Button
+              className="button button--black"
+              onClick={() => history.goBack()}
+            >
               <span>Вернуться назад</span>
-            </Link>
+            </Button>
           </div>
         )}
       </div>

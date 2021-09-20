@@ -9,8 +9,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCategory, setSortBy } from "../Redux/filters";
 import { fetchPizzas } from "../Redux/pizzas";
 import { addPizza } from "../Redux/cart";
-import Button from "../Сomponents/Button";
 import Modal from "../Сomponents/Modal";
+import Benefit from "../Сomponents/Benefit";
 
 const categoryNames = [
   "Женское бельё",
@@ -79,62 +79,48 @@ const Home = React.memo(function Home() {
   };
 
   return (
-    <div className="container">
-      <div className="content__advertising-item">
-        <div className="advertising__item-main">
-          <h2 className="advertising__item-title">
-            Fashion <span>Clothes</span>
-          </h2>
-          <p className="advertising__item-text">
-            Lorem Ipsum. Proin gravida nibh velit it’s a cold world
-          </p>
-          <Button
-            onClick={handleChangeCategoryOnDiscount}
-            className="button--add advertising__item-btn"
-            outline
-          >
-            Ко скидкам!
-          </Button>
+    <>
+      <Benefit
+        handleChangeCategoryOnDiscount={handleChangeCategoryOnDiscount}
+      />
+      <div className="wrapper">
+        <div className="content__top">
+          <Categories
+            activeItem={category}
+            onChangeCategory={onChangeCategory}
+            items={categoryNames}
+          />
+          <SortPopup
+            activeItem={sortBy.type}
+            items={sortItems}
+            onSelectSortBy={onSelectSortBy}
+          />
         </div>
+        <h2 className="content__title">
+          {category === null
+            ? "Все товары:"
+            : "Все товары выбранной категории:"}
+        </h2>
+        <div className="content__items">
+          {isLoaded
+            ? pizzas.map((pizza) => (
+                <PizzaBlock
+                  key={pizza.id}
+                  onClickAddPizza={onAddPizzaToCart}
+                  handleActiveModal={handleActiveModal}
+                  pizzasCountInCart={countOfPizzasInCart(pizza.id)}
+                  {...pizza}
+                />
+              ))
+            : Array(12)
+                .fill(0)
+                .map((_, index) => <PizzaLoadingBlock key={index} />)}
+        </div>
+        <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+          <img className="modal__img" src={imgForModal} alt="modal-pizza" />
+        </Modal>
       </div>
-      <div className="content__top">
-        <Categories
-          activeItem={category}
-          onChangeCategory={onChangeCategory}
-          items={categoryNames}
-        />
-        <SortPopup
-          activeItem={sortBy.type}
-          items={sortItems}
-          onSelectSortBy={onSelectSortBy}
-        />
-      </div>
-      <h2 className="content__title">
-        {category === null ? "Все товары:" : "Все товары выбранной категории:"}
-      </h2>
-      <div className="content__items">
-        {isLoaded
-          ? pizzas.map((pizza) => (
-              <PizzaBlock
-                key={pizza.id}
-                onClickAddPizza={onAddPizzaToCart}
-                handleActiveModal={handleActiveModal}
-                pizzasCountInCart={
-                  countOfPizzasInCart(pizza.id)
-                  //cartItems[pizza.id + pizza.size] && cartItems[pizza.id].items.length
-                  //10
-                }
-                {...pizza}
-              />
-            ))
-          : Array(12)
-              .fill(0)
-              .map((_, index) => <PizzaLoadingBlock key={index} />)}
-      </div>
-      <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
-        <img className="modal__img" src={imgForModal} alt="modal-pizza" />
-      </Modal>
-    </div>
+    </>
   );
 });
 

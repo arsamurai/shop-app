@@ -1,8 +1,9 @@
 @import "../variables";
 
 .footer {
-  border-top: 1px solid $gray-line;
-  padding: 40px 0;
+  border-top: 1px solid #d1cfcf;
+  padding: 40px 55px;
+  background-color: $gray-line;
 
   &__top {
     display: flex;

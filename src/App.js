@@ -1,20 +1,22 @@
 import React from "react";
-import { Route } from "react-router";
+import { useSelector } from "react-redux";
+import { Redirect, Route } from "react-router";
 import "./scss/app.scss";
 import { Header, Footer } from "./Сomponents";
-import { Home, Cart } from "./Pages";
+import { Home, Cart, Pizza } from "./Pages";
 
 function App() {
+  const pizza = useSelector(({ pizzaBlock }) => pizzaBlock.pizza);
+
   return (
     <div className="App">
-      <div class="wrapper">
-        <Header />
-        <div class="content">
-          <Route path="/" render={() => <Home />} exact />
-          <Route path="/cart" render={() => <Cart />} exact />
-        </div>
-        <Footer />
-      </div>
+      <Header />
+      <Route path="/" render={() => <Home />} exact />
+      <Route path="/cart" render={() => <Cart />} exact />
+      <Route path="/pizza" exact>
+        {pizza.id ? <Pizza pizza={pizza} /> : <Redirect to="/" />}
+      </Route>
+      <Footer />
     </div>
   );
 }

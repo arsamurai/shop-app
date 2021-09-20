@@ -1,14 +1,20 @@
 @import "../variables";
 
 .header {
-  border-bottom: 1px solid $gray-line;
-  padding: 40px 0;
+  box-shadow: 0px 13px 40px #d1cfcf;
+  padding: 40px 55px;
+  background-color: $gray-line;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  // .container {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   max-width: 1400px;
+  //   width: 100%;
+  // }
 
   &__cart {
     position: relative;
@@ -17,7 +23,7 @@
   .header__cart-link.fixed {
     position: fixed;
     top: 100px;
-    right: 75px;
+    right: 55px;
     z-index: 1000;
   }
 
