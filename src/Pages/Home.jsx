@@ -50,10 +50,6 @@ const Home = React.memo(function Home() {
     [sortBy]
   );
 
-  const handleChangeCategoryOnDiscount = () => {
-    onChangeCategory(4);
-  };
-
   const onAddPizzaToCart = (obj) => {
     dispatch(addPizza(obj));
   };
@@ -80,9 +76,7 @@ const Home = React.memo(function Home() {
 
   return (
     <>
-      <Benefit
-        handleChangeCategoryOnDiscount={handleChangeCategoryOnDiscount}
-      />
+      <Benefit onChangeCategory={onChangeCategory} />
       <div className="wrapper">
         <div className="content__top">
           <Categories

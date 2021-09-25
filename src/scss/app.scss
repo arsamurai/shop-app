@@ -304,7 +304,7 @@
   max-width: 800px;
   width: 100%;
   margin: 50px auto 0;
-  background: #f6bf6d;
+  background: $new-black;
   border-radius: 30px;
 }
 
@@ -337,7 +337,7 @@
   width: 50px;
   height: 20px;
   border-radius: 30px;
-  background: #f6bf6d;
+  background: $new-black;
 }
 
 .form-left-decoration:before {
@@ -366,11 +366,14 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #f6bf6d;
+  background: $new-black;
 }
 
 .form-inner {
   padding: 50px;
+  .form-title {
+    color: rgb(26, 189, 26);
+  }
 }
 
 .form-inner input,
@@ -385,7 +388,7 @@
   border-radius: 20px;
   font-size: 23px;
   margin-bottom: 40px;
-  border: 2px solid #8c3030;
+  border: 2px solid #000;
 }
 
 .form-inner textarea {
@@ -416,7 +419,7 @@
 }
 
 .errorMessage {
-  color: red;
+  color: rgb(29, 245, 29);
   position: absolute;
   bottom: -23px;
   left: 14px;
@@ -555,3 +558,5 @@
     letter-spacing: 0.015em;
   }
 }
+
+@import "media";

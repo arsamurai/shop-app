@@ -51,7 +51,7 @@
       "types": [0, 1],
       "sizes": ["M", "L", "XL", "XXL"],
       "price": 415,
-      "category": 3,
+      "category": 2,
       "discount": null,
       "rating": 8
     },

@@ -10,8 +10,8 @@ function Footer() {
       <div className="footer__top">
         <Link to="/">
           <div className="footer__logo">
-            <h1>top-shmot.od</h1>
-            <p>самая модная одежда во вселенной</p>
+            <h1 className="footer__logo-title" >top-shmot.od</h1>
+            <p className="footer__logo-text" >самая модная одежда во вселенной</p>
           </div>
         </Link>
         <ul className="social">

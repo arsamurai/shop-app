@@ -48,7 +48,7 @@ function Cart() {
   const history = useHistory();
 
   const formRef = useRef();
-  const [formValues, setFormValues] = useState([]);
+  const [formValues, setFormValues] = useState(null);
 
   const onClearCart = () => {
     setActiveModal(true);
@@ -113,19 +113,21 @@ function Cart() {
     if (formRef.current) {
       formRef.current.handleSubmit();
     }
-    console.log("Заказ:", items, "Клиент:", formValues);
-    dispatch(clearCart());
-    setComponentOfModal(
-      <div className="modal__component">
-        <p className="modal__component-text">
-          Ваш заказ отправлен! Ожидайте звонка...
-        </p>
-        <Link to="/" onClick={() => setActiveModal(false)} className="button">
-          Хорошо
-        </Link>
-      </div>
-    );
-    setActiveModal(true);
+    if (formValues) {
+      console.log("Заказ:", items, "Клиент:", formValues);
+      dispatch(clearCart());
+      setComponentOfModal(
+        <div className="modal__component">
+          <p className="modal__component-text">
+            Ваш заказ отправлен! Ожидайте звонка...
+          </p>
+          <Link to="/" onClick={() => setActiveModal(false)} className="button">
+            Хорошо
+          </Link>
+        </div>
+      );
+      setActiveModal(true);
+    }
   };
 
   return (
@@ -254,7 +256,9 @@ function Cart() {
                     <div class="form-right-decoration"></div>
                     <div class="circle"></div>
                     <div class="form-inner">
-                      <h3>Заполните, пожалуйста, форму:</h3>
+                      <h3 className="form-title">
+                        Заполните, пожалуйста, форму:
+                      </h3>
                       <div className="form-field">
                         {/* <label for="person-name" className="labelPersonName">
                           Имя...
@@ -321,8 +325,9 @@ function Cart() {
               </Formik>
               <div className="cart__bottom-buttons">
                 <Button
-                  className="button button--outline button--add go-back-btn"
+                  className="button--add go-back-btn"
                   onClick={() => history.goBack()}
+                  outline
                 >
                   <svg
                     width="8"

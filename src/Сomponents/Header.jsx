@@ -35,9 +35,11 @@ function Header() {
       <Link to="/">
         <div className="header__logo">
           <img width="38" src={logo} alt="Pizza logo" />
-          <div>
-            <h1>top-shmot.od</h1>
-            <p>самая модная одежда во вселенной</p>
+          <div className="header__main">
+            <h1 className="header__main-title">top-shmot.od</h1>
+            <p className="header__main-text">
+              самая модная одежда во вселенной
+            </p>
           </div>
         </div>
       </Link>
