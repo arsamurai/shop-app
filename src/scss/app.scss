@@ -31,6 +31,7 @@
 .container--cart {
   max-width: 920px;
   width: 100%;
+  padding: 0 15px;
   margin: 90px auto;
   .content__title {
     margin: 0;
@@ -263,7 +264,8 @@
 
   &--empty {
     margin: 0 auto;
-    width: 560px;
+    max-width: 560px;
+    width: 100%;
     text-align: center;
 
     h2 {
@@ -440,6 +442,7 @@
   &--container {
     max-width: 1200px;
     width: 100%;
+    padding: 0 15px;
     margin: 90px auto;
   }
 

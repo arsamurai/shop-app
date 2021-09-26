@@ -4,11 +4,12 @@
   .content__items {
     justify-content: space-between;
   }
-  .pizza-block:not(:nth-of-type(4n)) {
-    margin-right: 0;
-  }
   .pizza-block {
-    margin: 65px 35px 0;
+    margin-left: 35px;
+    margin-right: 35px;
+    &:not(:nth-of-type(4n)) {
+      margin-right: 35px;
+    }
   }
 }
 
@@ -23,15 +24,9 @@
     flex-direction: column;
     align-items: normal;
   }
-}
-
-@media (max-width: 1100px) {
   .content__items {
     justify-content: space-around;
   }
-  // .pizza-block {
-  //   margin: 65px 25px 0;
-  // }
 }
 
 @media (max-width: 975px) {
@@ -43,6 +38,15 @@
         margin-bottom: 10px;
       }
     }
+  }
+  .form-left-decoration,
+  .form-right-decoration,
+  .form-left-decoration:before,
+  .form-left-decoration:after,
+  .form-right-decoration:before,
+  .form-right-decoration:after,
+  .circle {
+    display: none;
   }
 }
 
@@ -64,6 +68,12 @@
 
   .button--cart {
     padding: 9px 17px;
+  }
+
+  .pizza {
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 30px;
   }
 }
 
@@ -101,6 +111,18 @@
       margin-left: 174px;
     }
   }
+  .modal__content {
+    width: 50%;
+  }
+  .pizza__info {
+    width: 75%;
+  }
+  .cart--empty img {
+    width: 265px;
+  }
+  .cart__item-count {
+    width: 15%;
+  }
 }
 
 @media (max-width: 620px) {
@@ -115,17 +137,31 @@
 
   .header,
   .footer {
-    padding: 35px;
+    padding: 20px;
   }
   .benefit .secondWord {
     margin-left: 114px;
   }
   .wrapper {
     width: calc(100vw - 70px);
-    margin: 35px auto;
+    margin: 45px auto;
+  }
+  .pizza-block:not(:nth-of-type(4n)) {
+    margin-right: 0;
   }
   .pizza-block {
     margin-left: 0;
+    margin-right: 0;
+  }
+  .modal__content {
+    width: 58%;
+  }
+  .pizza__image {
+    width: 60%;
+  }
+  .pizza__discount {
+    font-size: 25px;
+    margin-bottom: 20px;
   }
 }
 
@@ -159,6 +195,12 @@
     &-text {
       font-size: 28px;
     }
+  }
+  .modal__content {
+    width: 75%;
+  }
+  .pizza__info {
+    width: 95%;
   }
 }
 
@@ -196,5 +238,24 @@
         width: 100%;
       }
     }
+  }
+  .modal__content {
+    width: 93%;
+  }
+  .pizza__price {
+    font-size: 19px;
+    line-height: 21px;
+  }
+  .pizza__info {
+    width: 100%;
+  }
+  .cart--empty h2 {
+    font-size: 24px;
+  }
+  .cart--empty p {
+    font-size: 17px;
+  }
+  .cart--empty img {
+    width: 200px;
   }
 }

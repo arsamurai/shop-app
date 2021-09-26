@@ -21,10 +21,11 @@
 }
 
 .modal__content {
-  width: 40%;
+  width: 47%;
   transform: scale(0.5);
   transition: 0.4s all;
 }
+
 .modal__content.active {
   transform: scale(1);
 }
