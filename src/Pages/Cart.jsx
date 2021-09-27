@@ -28,7 +28,7 @@ function Cart() {
     lastName: Yup.string()
       .min(2, "Что-то слишком короткая фамилия*")
       .max(50, "Что-то очень длинная фамилия*")
-      .required("Поле для ввода фамилия обязательно*"),
+      .required("Поле для ввода фамили обязательно*"),
     telNumber: Yup.string()
       .matches(phoneRegExp, "Не верный номер телефона*")
       .required("Поле для ввода номера телефона обязательно*"),
@@ -168,7 +168,7 @@ function Cart() {
                 </svg>
                 Корзина
               </h2>
-              <div className="cart__clear">
+              <div className="cart__clear" onClick={onClearCart}>
                 <svg
                   width="20"
                   height="20"
@@ -205,7 +205,7 @@ function Cart() {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <span onClick={onClearCart}>Очистить корзину</span>
+                <span>Очистить корзину</span>
               </div>
             </div>
             <div className="content__items">

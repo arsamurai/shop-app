@@ -11,6 +11,12 @@
       margin-right: 35px;
     }
   }
+  .wrapper {
+    padding: 0 15px;
+    &.container--cart {
+      padding: 0 35px;
+    }
+  }
 }
 
 @media (max-width: 1237px) {
@@ -48,6 +54,16 @@
   .circle {
     display: none;
   }
+  .form {
+    width: 90%;
+  }
+  .form-inner {
+    padding: 35px;
+  }
+  .form-inner input,
+  .form-inner textarea {
+    margin-bottom: 35px;
+  }
 }
 
 @media (max-width: 958px) {
@@ -78,6 +94,10 @@
 }
 
 @media (max-width: 850px) {
+  .header,
+  .footer {
+    padding: 33px 45px;
+  }
   .header {
     .header__cart-link.fixed {
       position: fixed;
@@ -112,7 +132,7 @@
     }
   }
   .modal__content {
-    width: 50%;
+    width: 55%;
   }
   .pizza__info {
     width: 75%;
@@ -120,8 +140,21 @@
   .cart--empty img {
     width: 265px;
   }
-  .cart__item-count {
-    width: 15%;
+}
+
+@media (max-width: 700px) {
+  .cart__item {
+    flex-direction: column;
+  }
+  .cart__item-left {
+    width: 100%;
+  }
+  .cart__item-right {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .form-inner h3 {
+    text-align: center;
   }
 }
 
@@ -143,8 +176,10 @@
     margin-left: 114px;
   }
   .wrapper {
-    width: calc(100vw - 70px);
-    margin: 45px auto;
+    width: calc(100vw - 40px);
+    &.container--cart {
+      padding: 0 15px;
+    }
   }
   .pizza-block:not(:nth-of-type(4n)) {
     margin-right: 0;
@@ -162,6 +197,58 @@
   .pizza__discount {
     font-size: 25px;
     margin-bottom: 20px;
+  }
+  .container--cart {
+    padding: 0 15px;
+  }
+  .cart {
+    .content__title {
+      font-size: 26px;
+    }
+    &__clear span {
+      font-size: 17px;
+    }
+    &__item-price b {
+      font-size: 20px;
+    }
+    &__item-count b {
+      font-size: 20px;
+    }
+    &__bottom-details span {
+      font-size: 18px;
+    }
+  }
+
+  .button--circle {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+  }
+  .form {
+    width: 95%;
+  }
+  .form-inner {
+    padding: 20px;
+  }
+  .form-inner h3 {
+    margin-bottom: 13px;
+    font-size: 20px;
+  }
+  .errorMessage {
+    font-size: 14px;
+    bottom: -19px;
+    left: 11px;
+  }
+  .container--cart {
+    margin: 60px auto;
+  }
+  .cart__bottom-buttons .pay-btn {
+    font-size: 15px;
+    width: 192px;
+    padding: 11px;
+  }
+  .cart__bottom-buttons .go-back-btn {
+    width: 193px;
   }
 }
 
@@ -202,6 +289,58 @@
   .pizza__info {
     width: 95%;
   }
+  .cart {
+    &--empty .button--black {
+      padding: 8px 0 9px;
+      width: 205px;
+      margin: 0 auto;
+      font-weight: 600;
+      font-size: 17px;
+    }
+    &__bottom {
+      margin: 35px 0;
+    }
+    &__bottom-details {
+      flex-direction: column;
+    }
+    &__clear span {
+      display: none;
+    }
+    &__item-count b {
+      margin: 0 5px;
+    }
+    &__item-price b {
+      font-size: 20px;
+    }
+    &__item-count b {
+      font-size: 20px;
+    }
+  }
+
+  .button--circle {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+  }
+  .form-inner {
+    padding: 10px;
+  }
+  .form-inner input,
+  .form-inner textarea {
+    padding: 0px 13px;
+    line-height: 36px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    border: 1px solid #000;
+  }
+  .cart__bottom-buttons {
+    margin-top: 30px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .cart__bottom-buttons .pay-btn {
+    margin-bottom: 15px;
+  }
 }
 
 @media (max-width: 450px) {
@@ -237,10 +376,13 @@
         margin-bottom: 10px;
         width: 100%;
       }
+      li:not(:last-child) {
+        margin-right: 0;
+      }
     }
   }
   .modal__content {
-    width: 93%;
+    width: 87%;
   }
   .pizza__price {
     font-size: 19px;
@@ -249,13 +391,82 @@
   .pizza__info {
     width: 100%;
   }
-  .cart--empty h2 {
-    font-size: 24px;
+  .cart {
+    &--empty h2 {
+      font-size: 24px;
+    }
+    &--empty p {
+      font-size: 17px;
+    }
+    &--empty img {
+      width: 200px;
+    }
+    & .content__title {
+      font-size: 24px;
+    }
+    &__item-info h3 {
+      font-size: 21px;
+    }
+    &__item-info p {
+      font-size: 17px;
+    }
   }
-  .cart--empty p {
-    font-size: 17px;
+  .errorMessage {
+    font-size: 13px;
+    bottom: -18px;
+    left: 3px;
   }
-  .cart--empty img {
-    width: 200px;
+  .form-inner h3 {
+    margin-bottom: 9px;
+    font-size: 16px;
+  }
+  .errorMessage {
+    font-size: 10px;
+    bottom: -15px;
+    left: 3px;
+  }
+  .wrapper {
+    width: calc(100vw - 10px);
+  }
+}
+
+@media (max-width: 400px) {
+  .pizza--container .go-back-btn {
+    width: 100%;
+  }
+}
+
+@media (max-height: 700px) {
+  .benefit {
+    &-title {
+      font-size: 100px;
+      line-height: 68px;
+    }
+    &-text {
+      font-size: 31px;
+      margin: 23px 0 33px;
+    }
+    .secondWord {
+      margin-left: 174px;
+    }
+  }
+}
+
+@media (max-height: 578px) {
+  .benefit {
+    &-title {
+      font-size: 85px;
+      line-height: 58px;
+    }
+    .secondWord {
+      margin-left: 68px;
+    }
+    &-text {
+      font-size: 23px;
+    }
+    &-btn {
+      font-size: 23px;
+      height: auto;
+    }
   }
 }

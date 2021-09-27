@@ -31,7 +31,7 @@
 .container--cart {
   max-width: 920px;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 45px;
   margin: 90px auto;
   .content__title {
     margin: 0;
@@ -101,11 +101,21 @@
     padding-top: 30px;
     margin-top: 30px;
 
+    &-left {
+      width: 55%;
+      display: flex;
+    }
+
+    &-right {
+      width: 45%;
+      display: flex;
+      justify-content: space-between;
+    }
+
     &-img {
       display: flex;
       align-items: center;
       margin-right: 15px;
-      width: 10%;
 
       img {
         width: 80px;
@@ -118,7 +128,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 40%;
 
       h3 {
         font-weight: bold;
@@ -137,7 +146,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 11%;
 
       &-minus {
         svg {
@@ -149,6 +157,7 @@
 
       b {
         font-size: 22px;
+        margin: 0 10px;
       }
     }
 
@@ -156,7 +165,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 33%;
 
       b {
         font-weight: bold;
@@ -168,8 +176,6 @@
     &-remove {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      width: 4%;
 
       .button {
         border-color: darken($color: $gray-line, $amount: 10);
@@ -374,7 +380,7 @@
 .form-inner {
   padding: 50px;
   .form-title {
-    color: rgb(26, 189, 26);
+    color: #1df51d;
   }
 }
 
@@ -423,6 +429,7 @@
 .errorMessage {
   color: rgb(29, 245, 29);
   position: absolute;
+  font-size: 16px;
   bottom: -23px;
   left: 14px;
 }

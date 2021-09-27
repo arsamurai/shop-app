@@ -75,7 +75,7 @@ function Benefit({ onChangeCategory }) {
             >
               <div className="benefit-main">
                 <h2 className="benefit-title">
-                  ss <span className="secondWord">Clothes</span>
+                  Nikolay <span className="secondWord">Pidor</span>
                 </h2>
                 <p className="benefit-text">
                   Только у нас вы найдёте что-то полезное!
@@ -101,7 +101,7 @@ function Benefit({ onChangeCategory }) {
             >
               <div className="benefit-main">
                 <h2 className="benefit-title">
-                  ffqfqf <span className="secondWord">Clothes</span>
+                  Artur4ik <span className="secondWord">Profi</span>
                 </h2>
                 <p className="benefit-text">
                   Только у нас вы найдёте что-то полезное!
