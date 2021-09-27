@@ -436,7 +436,7 @@
   }
 }
 
-@media (max-height: 700px) {
+@media (max-height: 700px) and (min-width: 850px) {
   .benefit {
     &-title {
       font-size: 100px;
@@ -452,7 +452,7 @@
   }
 }
 
-@media (max-height: 578px) {
+@media (max-height: 578px) and (min-width: 500px) {
   .benefit {
     &-title {
       font-size: 85px;
