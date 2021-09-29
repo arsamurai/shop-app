@@ -138,7 +138,11 @@ function Pizza({ pizza }) {
         </svg>
         <span>Вернуться назад</span>
       </Button>
-      <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+      <Modal
+        activeModal={activeModal}
+        setActiveModal={setActiveModal}
+        modalForImg
+      >
         <img className="modal__img" src={pizza.imageUrl} alt="modal-pizza" />
       </Modal>
     </div>

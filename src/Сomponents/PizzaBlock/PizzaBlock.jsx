@@ -94,7 +94,7 @@ function PizzaBlock({
         <Link
           to="/pizza"
           onClick={handleSetPizza}
-          className="button--add"
+          className="button button--add button--outline"
           outline
         >
           <span>Заказать</span>

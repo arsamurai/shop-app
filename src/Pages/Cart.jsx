@@ -376,7 +376,7 @@ function Cart() {
           </div>
         )}
       </div>
-      <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+      <Modal activeModal={activeModal} setActiveModal={setActiveModal} >
         {componentOfModal}
       </Modal>
     </>

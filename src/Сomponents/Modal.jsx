@@ -1,6 +1,12 @@
 import React from "react";
+import cn from "classnames";
 
-export default function Modal({ activeModal, setActiveModal, children }) {
+export default function Modal({
+  activeModal,
+  setActiveModal,
+  modalForImg,
+  children,
+}) {
   const closeActiveModal = () => {
     setActiveModal(false);
   };
@@ -11,7 +17,15 @@ export default function Modal({ activeModal, setActiveModal, children }) {
       onClick={closeActiveModal}
     >
       <div
-        className={activeModal ? "modal__content active" : "modal__content"}
+        className={cn(
+          "modal__content",
+          {
+            "active": activeModal,
+          },
+          {
+            "modalForImg": modalForImg,
+          }
+        )}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal__close" onClick={closeActiveModal}>

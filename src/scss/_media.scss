@@ -99,7 +99,7 @@
 @media (max-width: 850px) {
   .header,
   .footer {
-    padding: 33px 45px;
+    padding: 25px 40px;
   }
   .header {
     .header__cart-link.fixed {
@@ -135,6 +135,9 @@
     }
   }
   .modal__content {
+    width: 55%;
+  }
+  .modal__content.modalForImg {
     width: 55%;
     height: 64%;
   }
@@ -473,6 +476,9 @@
 
 @media (max-height: 578px) and (min-width: 500px) {
   .benefit {
+    &-main {
+      width: 448px;
+    }
     &-title {
       font-size: 73px;
       line-height: 50px;
@@ -493,6 +499,9 @@
 
 @media (max-height: 800px) and (min-width: 851px) {
   .modal__content {
+    width: 475px;
+  }
+  .modal__content.modalForImg {
     width: 475px;
     height: 475px;
   }

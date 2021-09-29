@@ -110,7 +110,11 @@ const Home = React.memo(function Home() {
                 .fill(0)
                 .map((_, index) => <PizzaLoadingBlock key={index} />)}
         </div>
-        <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+        <Modal
+          activeModal={activeModal}
+          setActiveModal={setActiveModal}
+          modalForImg
+        >
           <img className="modal__img" src={imgForModal} alt="modal-pizza" />
         </Modal>
       </div>

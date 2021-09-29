@@ -123,7 +123,7 @@ function CartItem({
           </Button>
         </div>
       </div>
-      <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+      <Modal activeModal={activeModal} setActiveModal={setActiveModal} modalForImg>
         <img className="modal__img" src={imageUrl} alt="modal-pizza" />
       </Modal>
     </div>
