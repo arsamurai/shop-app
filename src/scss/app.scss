@@ -380,7 +380,7 @@
 .form-inner {
   padding: 50px;
   .form-title {
-    color: #1df51d;
+    color: #fff;
   }
 }
 
@@ -456,8 +456,17 @@
   &__image {
     width: 50%;
     object-fit: cover;
-    margin-left: 20px;
+    margin-left: auto;
+    margin-right: auto;
     cursor: zoom-in;
+    padding: 20px;
+    img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 5px 9px #000;
+    }
   }
 
   &__title {

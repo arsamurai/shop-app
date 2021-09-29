@@ -10,27 +10,29 @@ function Footer() {
       <div className="footer__top">
         <Link to="/">
           <div className="footer__logo">
-            <h1 className="footer__logo-title" >top-shmot.od</h1>
-            <p className="footer__logo-text" >самая модная одежда во вселенной</p>
+            <h1 className="footer__logo-title">svobodna</h1>
+            <p className="footer__logo-text">
+              самая модная одежда во вселенной
+            </p>
           </div>
         </Link>
         <ul className="social">
           <li className="social__link">
             <img className="social__link-img" src={facebook} alt="" />
-            <div className="social__link-text">topShmot.od</div>
+            <div className="social__link-text">svobodna</div>
           </li>
           <li className="social__link">
             <img className="social__link-img" src={instagram} alt="" />
-            <div className="social__link-text">topshmot.od</div>
+            <div className="social__link-text">svobodn@</div>
           </li>
           <li className="social__link">
             <img className="social__link-img" src={youtube} alt="" />
-            <div className="social__link-text">TopShmot.od</div>
+            <div className="social__link-text">Svobodna</div>
           </li>
         </ul>
       </div>
       <div className="footer__bottom">
-        <p className="copy">© 2021 TOP.IN.UA | All Rights Reserved</p>
+        <p className="copy">© 2021 SVOBODNA | All Rights Reserved</p>
       </div>
     </div>
   );

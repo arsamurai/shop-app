@@ -109,12 +109,13 @@ function Pizza({ pizza }) {
             </Button>
           </div>
         </div>
-        <img
-          className="pizza__image"
-          onClick={() => handleActiveModal()}
-          src={pizza.imageUrl}
-          alt="Pizza"
-        />
+        <div className="pizza__image">
+          <img
+            onClick={() => handleActiveModal()}
+            src={pizza.imageUrl}
+            alt="Pizza"
+          />
+        </div>
       </div>
       <Button
         className="button button--outline button--add go-back-btn"

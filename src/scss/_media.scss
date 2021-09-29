@@ -90,6 +90,9 @@
     flex-direction: column-reverse;
     align-items: center;
     margin-bottom: 30px;
+    &__image {
+      width: 70%;
+    }
   }
 }
 
@@ -133,6 +136,7 @@
   }
   .modal__content {
     width: 55%;
+    height: 64%;
   }
   .pizza__info {
     width: 75%;
@@ -189,10 +193,13 @@
     margin-right: 0;
   }
   .modal__content {
-    width: 58%;
+    width: 63%;
   }
   .pizza__image {
-    width: 60%;
+    width: 85%;
+    img {
+      height: 400px;
+    }
   }
   .pizza__discount {
     font-size: 25px;
@@ -249,6 +256,9 @@
   }
   .cart__bottom-buttons .go-back-btn {
     width: 193px;
+  }
+  .pizza--container {
+    margin: 70px auto;
   }
 }
 
@@ -341,6 +351,9 @@
   .cart__bottom-buttons .pay-btn {
     margin-bottom: 15px;
   }
+  .pizza__image {
+    width: 100%;
+  }
 }
 
 @media (max-width: 450px) {
@@ -384,13 +397,19 @@
   .modal__content {
     width: 87%;
   }
-  .pizza__price {
-    font-size: 19px;
-    line-height: 21px;
+  .pizza {
+    &__price {
+      font-size: 19px;
+      line-height: 21px;
+    }
+    &__info {
+      width: 100%;
+    }
+    &__image img {
+      height: 350px;
+    }
   }
-  .pizza__info {
-    width: 100%;
-  }
+
   .cart {
     &--empty h2 {
       font-size: 24px;
@@ -470,3 +489,10 @@
     }
   }
 }
+
+@media (max-height: 800px) and (min-width: 851px) {
+  .modal__content {
+    width: 475px;
+    height: 475px;
+  }
+} ;

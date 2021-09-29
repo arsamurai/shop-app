@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../assets/img/pizza-logo.svg";
+import logo from "../assets/img/logo.jpg";
 import { useSelector } from "react-redux";
 import Button from "./Button";
 import { Link } from "react-router-dom";
@@ -36,7 +36,7 @@ function Header() {
         <div className="header__logo">
           <img width="38" src={logo} alt="Pizza logo" />
           <div className="header__main">
-            <h1 className="header__main-title">top-shmot.od</h1>
+            <h1 className="header__main-title">svobodna</h1>
             <p className="header__main-text">
               самая модная одежда во вселенной
             </p>
