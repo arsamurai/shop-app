@@ -3,5 +3,6 @@ export { default as Categories } from "./Categories";
 export { default as Header } from "./Header";
 export { default as Footer } from "./Footer";
 export { default as SortPopup } from "./SortPopup";
+export { default as ScrollToTop } from "./ScrollToTop";
 export { default as PizzaBlock } from "./PizzaBlock/PizzaBlock";
 export { default as PizzaLoadingBlock } from "./PizzaBlock/LoadingBlock";

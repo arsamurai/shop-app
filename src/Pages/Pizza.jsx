@@ -12,7 +12,7 @@ function Pizza({ pizza }) {
 
   const cartItems = useSelector(({ cart }) => cart.items);
 
-  const pizzaSizes = ["XS", "S", "M", "L", "XL"];
+  const pizzaSizes = ["36", "37", "38", "39", "40", "41"];
   const [activeSize, setActiveSize] = React.useState(pizza.sizes[0]);
 
   const [activeModal, setActiveModal] = React.useState(false);
@@ -55,10 +55,8 @@ function Pizza({ pizza }) {
       <div className="pizza">
         <div className="pizza__info">
           <h4 className="pizza__title">{pizza.name}</h4>
-          <p className="pizza__text">
-            Фирменная коробка В ПОДАРОК! Состав: 93% хлопок 7% эластан. 5 цветов
-            в наличии.
-          </p>
+          <p className="pizza__description">{pizza.description}</p>
+          <p className="pizza__sewing">{pizza.sewing}</p>
           {pizza.discount && (
             <p className="pizza__discount">Скидка {pizza.discount}% !!!</p>
           )}

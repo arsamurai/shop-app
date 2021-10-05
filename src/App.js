@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router";
 import "./scss/app.scss";
-import { Header, Footer } from "./Сomponents";
+import { Header, Footer, ScrollToTop } from "./Сomponents";
 import { Home, Cart, Pizza } from "./Pages";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
 
   return (
     <div className="App">
+      <ScrollToTop />
       <Header />
       <Route path="/" render={() => <Home />} exact />
       <Route path="/cart" render={() => <Cart />} exact />

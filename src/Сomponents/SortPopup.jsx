@@ -30,8 +30,8 @@ const SortPopup = React.memo(function SortPopup({
   }, []);
 
   return (
-    <div class="sort" ref={sortRef}>
-      <div class={cn("sort__label", { active: visiblePopup })}>
+    <div className="sort" ref={sortRef}>
+      <div className={cn("sort__label", { active: visiblePopup })}>
         <svg
           width="10"
           height="6"
@@ -48,12 +48,12 @@ const SortPopup = React.memo(function SortPopup({
         <span onClick={toggleVisiblePopup}>{activeLable}</span>
       </div>
       {visiblePopup && (
-        <div class="sort__popup">
+        <div className="sort__popup">
           <ul>
             {items &&
               items.map((obj, index) => (
                 <li
-                  className={activeItem === obj.type && "active"}
+                  classNameName={activeItem === obj.type && "active"}
                   onClick={() => onSelectItem(obj)}
                   key={`${obj.type}_${index}`}
                 >

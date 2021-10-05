@@ -11,6 +11,8 @@ function PizzaBlock({
   imageUrl,
   sizes,
   price,
+  description,
+  sewing,
   discount,
   onClickAddPizza,
   handleActiveModal,
@@ -33,6 +35,8 @@ function PizzaBlock({
       name,
       imageUrl,
       size: activeSize,
+      description,
+      sewing,
       discount,
       price: discount ? Math.floor(price - (price * discount) / 100) : price,
     };
@@ -46,10 +50,11 @@ function PizzaBlock({
       imageUrl,
       sizes,
       firstPrice: price,
+      description,
+      sewing,
       discount,
       price: discount ? Math.floor(price - (price * discount) / 100) : price,
     };
-    console.log(pizza);
     dispatch(setPizza(obj));
   };
 
@@ -62,10 +67,7 @@ function PizzaBlock({
         alt="Pizza"
       />
       <h4 className="pizza-block__title">{name}</h4>
-      <p className="pizza-block__text">
-        Фирменная коробка В ПОДАРОК! Состав: 93% хлопок 7% эластан. 5 цветов в
-        наличии.
-      </p>
+      <p className="pizza-block__text">{description}</p>
       {/* <div className="pizza-block__selector">
         <ul>
           {pizzaSizes.map((size, index) => {
@@ -95,7 +97,6 @@ function PizzaBlock({
           to="/pizza"
           onClick={handleSetPizza}
           className="button button--add button--outline"
-          outline
         >
           <span>Заказать</span>
           {pizzasCountInCart && <i>{pizzasCountInCart}</i>}

@@ -47,8 +47,7 @@ function Cart() {
   const [componentOfModal, setComponentOfModal] = useState(null);
   const history = useHistory();
 
-  const formRef = useRef();
-  const [formValues, setFormValues] = useState(null);
+  const formRef = useRef(null);
 
   const onClearCart = () => {
     setActiveModal(true);
@@ -109,21 +108,18 @@ function Cart() {
 
   const [activeModal, setActiveModal] = React.useState(false);
 
-  const onPayPizzas = () => {
-    if (formRef.current) {
-      formRef.current.handleSubmit();
-    }
-    if (formValues) {
-      console.log("Заказ:", items, "Клиент:", formValues);
+  const onPayPizzas = (values) => {
+    if (values) {
+      console.log("Заказ:", items, "Клиент:", values);
       dispatch(clearCart());
       setComponentOfModal(
         <div className="modal__component">
           <p className="modal__component-text">
             Ваш заказ отправлен! Ожидайте звонка...
           </p>
-          <Link to="/" onClick={() => setActiveModal(false)} className="button">
+          <Button onClick={() => setActiveModal(false)} className="button">
             Хорошо
-          </Link>
+          </Button>
         </div>
       );
       setActiveModal(true);
@@ -246,16 +242,16 @@ function Cart() {
                 }}
                 validationSchema={DisplayingErrorMessagesSchema}
                 onSubmit={(values) => {
-                  setFormValues(values);
+                  onPayPizzas(values);
                 }}
                 innerRef={formRef}
               >
                 {({ errors, touched }) => (
-                  <Form class="form">
-                    <div class="form-left-decoration"></div>
-                    <div class="form-right-decoration"></div>
-                    <div class="circle"></div>
-                    <div class="form-inner">
+                  <Form className="form">
+                    <div className="form-left-decoration"></div>
+                    <div className="form-right-decoration"></div>
+                    <div className="circle"></div>
+                    <div className="form-inner">
                       <h3 className="form-title">
                         Заполните, пожалуйста, форму:
                       </h3>
@@ -348,7 +344,7 @@ function Cart() {
                 </Button>
                 <button
                   type="submit"
-                  onClick={onPayPizzas}
+                  onClick={() => formRef.current.handleSubmit()}
                   className="button pay-btn"
                 >
                   <span>Заказать</span>
@@ -376,7 +372,7 @@ function Cart() {
           </div>
         )}
       </div>
-      <Modal activeModal={activeModal} setActiveModal={setActiveModal} >
+      <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
         {componentOfModal}
       </Modal>
     </>
