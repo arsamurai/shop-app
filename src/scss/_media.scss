@@ -89,7 +89,6 @@
   .pizza {
     flex-direction: column-reverse;
     align-items: center;
-    margin-bottom: 30px;
     &__image {
       width: 70%;
     }
@@ -207,6 +206,12 @@
     font-size: 25px;
     margin-bottom: 20px;
   }
+  .timer__num {
+    font-size: 19px;
+  }
+  .timer__text {
+    font-size: 11px;
+  }
   .container--cart {
     padding: 0 15px;
   }
@@ -260,7 +265,7 @@
     width: 193px;
   }
   .pizza--container {
-    margin: 70px auto;
+    margin: 50px auto;
   }
 }
 
@@ -448,6 +453,12 @@
   }
   .wrapper {
     width: calc(100vw - 10px);
+  }
+  .pizza__discount {
+    font-size: 20px;
+  }
+  .timer section {
+    margin: 0 9px;
   }
 }
 

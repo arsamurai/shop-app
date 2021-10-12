@@ -22,8 +22,8 @@
     }
 
     span {
-      color: $new-black;
-      border-bottom: 1px dashed $new-black;
+      color: $black;
+      border-bottom: 1px dashed $black;
       cursor: pointer;
     }
   }
@@ -52,7 +52,7 @@
 
         &.active {
           font-weight: bold;
-          color: $new-black;
+          color: $black;
         }
       }
     }

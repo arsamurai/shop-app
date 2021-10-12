@@ -25,16 +25,9 @@ function Cart() {
       .min(2, "Что-то слишком короткое имя*")
       .max(50, "Что-то очень длинное имя*")
       .required("Поле для ввода имени обязательно*"),
-    lastName: Yup.string()
-      .min(2, "Что-то слишком короткая фамилия*")
-      .max(50, "Что-то очень длинная фамилия*")
-      .required("Поле для ввода фамили обязательно*"),
     telNumber: Yup.string()
       .matches(phoneRegExp, "Не верный номер телефона*")
       .required("Поле для ввода номера телефона обязательно*"),
-    email: Yup.string()
-      .email("Введите корректный адрес почты*")
-      .required("Поле для ввода электронной почты обязательно*"),
   });
 
   const dispatch = useDispatch();
@@ -235,8 +228,6 @@ function Cart() {
               <Formik
                 initialValues={{
                   firstName: "",
-                  lastName: "",
-                  email: "",
                   telNumber: "",
                   message: "",
                 }}
@@ -268,33 +259,6 @@ function Cart() {
                         />
                         {errors.firstName && touched.firstName ? (
                           <div className="errorMessage">{errors.firstName}</div>
-                        ) : null}
-                      </div>
-                      <div className="form-field">
-                        {/* <label
-                          for="person-surname"
-                          className="labelPersonSurname"
-                        >
-                          Фамилия...
-                        </label> */}
-                        <Field
-                          type="text"
-                          id="person-surname"
-                          name="lastName"
-                          placeholder="Фамилия..."
-                        />
-                        {errors.lastName && touched.lastName ? (
-                          <div className="errorMessage">{errors.lastName}</div>
-                        ) : null}
-                      </div>
-                      <div className="form-field">
-                        <Field
-                          type="email"
-                          name="email"
-                          placeholder="Электроннная почта..."
-                        />
-                        {errors.email && touched.email ? (
-                          <div className="errorMessage">{errors.email}</div>
                         ) : null}
                       </div>
                       <div className="form-field">

@@ -90,7 +90,7 @@ function PizzaBlock({
         <div className="pizza-block__price">
           <p className={discount && "price-throw"}>{price} грн.</p>
           {discount && (
-            <p>{Math.floor(price - (price * discount) / 100)} грн.</p>
+            <p className={discount && "price-main"}>{Math.floor(price - (price * discount) / 100)} грн.</p>
           )}
         </div>
         <Link

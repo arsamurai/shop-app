@@ -216,7 +216,7 @@
 
         &:last-of-type {
           b {
-            color: $new-black;
+            color: $black;
           }
         }
       }
@@ -312,7 +312,7 @@
   max-width: 800px;
   width: 100%;
   margin: 50px auto 0;
-  background: $new-black;
+  background: $black;
   border-radius: 30px;
 }
 
@@ -345,7 +345,7 @@
   width: 50px;
   height: 20px;
   border-radius: 30px;
-  background: $new-black;
+  background: $black;
 }
 
 .form-left-decoration:before {
@@ -374,7 +374,7 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: $new-black;
+  background: $black;
 }
 
 .form-inner {
@@ -445,6 +445,7 @@
 .pizza {
   text-align: center;
   display: flex;
+  margin-bottom: 30px;
 
   &--container {
     max-width: 1200px;
@@ -458,7 +459,6 @@
     object-fit: cover;
     margin-left: auto;
     margin-right: auto;
-    cursor: zoom-in;
     padding: 20px;
     img {
       width: 100%;
@@ -487,16 +487,27 @@
   }
 
   &__discount {
-    font-size: 40px;
+    font-size: 27px;
     color: red;
     font-weight: 600;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
+  }
+
+  &__subText {
+    margin-bottom: 15px;
+    text-align: start;
+    font-weight: 600;
+    font-style: oblique;
   }
 
   &__price-throw {
     text-decoration: line-through;
     display: inline-block;
     opacity: 0.6;
+  }
+
+  &__price-main {
+    color: red;
   }
 
   &__info {

@@ -4,7 +4,8 @@ import Button from "../Сomponents/Button";
 import { useSelector, useDispatch } from "react-redux";
 import { addPizza } from "../Redux/cart";
 import Modal from "../Сomponents/Modal";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import Timer from "../Сomponents/Timer";
 
 function Pizza({ pizza }) {
   const dispatch = useDispatch();
@@ -48,18 +49,23 @@ function Pizza({ pizza }) {
       price: pizza.price,
     };
     dispatch(addPizza(obj));
+    handleActiveModal();
   };
 
   return (
     <div className="wrapper pizza--container">
       <div className="pizza">
         <div className="pizza__info">
+          {pizza.discount && (
+            <p className="pizza__discount">Скидка {pizza.discount}% действует ещё:</p> 
+          )}
+          {pizza.discount && (
+            <Timer />
+          )}
           <h4 className="pizza__title">{pizza.name}</h4>
           <p className="pizza__description">{pizza.description}</p>
           <p className="pizza__sewing">{pizza.sewing}</p>
-          {pizza.discount && (
-            <p className="pizza__discount">Скидка {pizza.discount}% !!!</p>
-          )}
+          <p className="pizza__subText">Выбери свой размер:</p>
           <div className="pizza__selector">
             <ul>
               {pizzaSizes.map((size, index) => {
@@ -85,7 +91,11 @@ function Pizza({ pizza }) {
               <p className={pizza.discount && "pizza__price-throw"}>
                 {pizza.firstPrice} грн.
               </p>
-              {pizza.discount && <p>{pizza.price} грн.</p>}
+              {pizza.discount && (
+                <p className={pizza.discount && "pizza__price-main"}>
+                  {pizza.price} грн.
+                </p>
+              )}
             </div>
             <Button onClick={handleOnAddPizza} className="button--add" outline>
               <svg
@@ -108,11 +118,7 @@ function Pizza({ pizza }) {
           </div>
         </div>
         <div className="pizza__image">
-          <img
-            onClick={() => handleActiveModal()}
-            src={pizza.imageUrl}
-            alt="Pizza"
-          />
+          <img src={pizza.imageUrl} alt="Pizza" />
         </div>
       </div>
       <Button
@@ -136,12 +142,22 @@ function Pizza({ pizza }) {
         </svg>
         <span>Вернуться назад</span>
       </Button>
-      <Modal
-        activeModal={activeModal}
-        setActiveModal={setActiveModal}
-        modalForImg
-      >
-        <img className="modal__img" src={pizza.imageUrl} alt="modal-pizza" />
+      <Modal activeModal={activeModal} setActiveModal={setActiveModal}>
+        <div className="modal__component">
+          <p className="modal__component-text">Хотите перейти в корзину?</p>
+          <Link
+            to="/cart"
+            onClick={() => {
+              setActiveModal(false);
+            }}
+            className="button"
+          >
+            Да
+          </Link>
+          <button onClick={() => setActiveModal(false)} className="button">
+            Нет
+          </button>
+        </div>
       </Modal>
     </div>
   );
