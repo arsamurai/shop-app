@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import emailjs from "emailjs-com";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import CartItem from "../Сomponents/CartItem";
@@ -101,9 +102,39 @@ function Cart() {
 
   const [activeModal, setActiveModal] = React.useState(false);
 
+  const sendEmail = (values) => {
+    emailjs
+      .send("gmail", "shop-app-order", values, "user_djun9kug7X989IkJEcFf3")
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   const onPayPizzas = (values) => {
     if (values) {
-      console.log("Заказ:", items, "Клиент:", values);
+      let orderPizzas = '';
+      const pizzas = [].concat.apply(
+        [],
+        Object.values(items).map((obj) => obj.items)
+      );
+      pizzas.forEach((pizza) => orderPizzas += ` ${pizza.name} : ${pizza.size}. `)
+
+      const order = [values, totalCount, totalPrice, orderPizzas];
+
+      sendEmail({
+        name: order[0].firstName,
+        telNumber: order[0].telNumber,
+        message: order[0].message,
+        count: order[1],
+        price: order[2],
+        order: order[3],
+      });
+
       dispatch(clearCart());
       setComponentOfModal(
         <div className="modal__component">
@@ -247,9 +278,6 @@ function Cart() {
                         Заполните, пожалуйста, форму:
                       </h3>
                       <div className="form-field">
-                        {/* <label for="person-name" className="labelPersonName">
-                          Имя...
-                        </label> */}
                         <Field
                           type="text"
                           name="firstName"

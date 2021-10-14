@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "emailjs-com": "^3.2.0",
     "formik": "^2.2.9"
   }
 }
