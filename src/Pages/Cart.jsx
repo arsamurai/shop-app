@@ -15,6 +15,7 @@ import cartEmptyImage from "../assets/img/empty-cart.png";
 import Modal from "../Сomponents/Modal";
 import { Button } from "../Сomponents";
 import { useHistory } from "react-router-dom";
+import cn from "classnames";
 
 function Cart() {
   const phoneRegExp = RegExp(
@@ -117,12 +118,14 @@ function Cart() {
 
   const onPayPizzas = (values) => {
     if (values) {
-      let orderPizzas = '';
+      let orderPizzas = "";
       const pizzas = [].concat.apply(
         [],
         Object.values(items).map((obj) => obj.items)
       );
-      pizzas.forEach((pizza) => orderPizzas += ` ${pizza.name} : ${pizza.size}. `)
+      pizzas.forEach(
+        (pizza) => (orderPizzas += ` ${pizza.name} : ${pizza.size}. `)
+      );
 
       const order = [values, totalCount, totalPrice, orderPizzas];
 
@@ -149,6 +152,22 @@ function Cart() {
       setActiveModal(true);
     }
   };
+
+  const [nameExists, setNameExists] = useState(false);
+  const [telNumberExists, setTelNumberExists] = useState(false);
+  const [messageExists, setMessageExists] = useState(false);
+
+  const checkNameExists = (e) => {
+    e.target.value ? setNameExists(true) : setNameExists(false);
+  }
+
+  const checkTelNumberExists = (e) => {
+    e.target.value ? setTelNumberExists(true) : setTelNumberExists(false);
+  }
+
+  const checkMessageExists = (e) => {
+    e.target.value ? setMessageExists(true) : setMessageExists(false);
+  }
 
   return (
     <>
@@ -281,10 +300,12 @@ function Cart() {
                         <Field
                           type="text"
                           name="firstName"
-                          id="person-name"
-                          className="personName"
-                          placeholder="Имя..."
+                          id="personName"
+                          onBlur={(e) => checkNameExists(e)}
+                          className={cn("personName", {"value-exists": nameExists})}
+                          placeholder="Александр Иванов"
                         />
+                        <label className="form-field__lable">Имя</label>
                         {errors.firstName && touched.firstName ? (
                           <div className="errorMessage">{errors.firstName}</div>
                         ) : null}
@@ -293,8 +314,11 @@ function Cart() {
                         <Field
                           type="tel"
                           name="telNumber"
-                          placeholder="Номер телефона..."
+                          onBlur={(e) => checkTelNumberExists(e)}
+                          className={cn("personNumber", {"value-exists": telNumberExists})}
+                          placeholder="099 99 99 999"
                         />
+                        <label className="form-field__lable">Номер телефона</label>
                         {errors.telNumber && touched.telNumber ? (
                           <div className="errorMessage">{errors.telNumber}</div>
                         ) : null}
@@ -303,9 +327,12 @@ function Cart() {
                         <Field
                           type="text"
                           name="message"
-                          placeholder="Ваше сообщение..."
+                          onBlur={(e) => checkMessageExists(e)}
+                          className={cn("personMessage", {"value-exists": messageExists})}
+                          placeholder="В свободном формате"
                           as="textarea"
                         />
+                        <label className="form-field__lable">Ваше сообщение</label>
                       </div>
                     </div>
                   </Form>

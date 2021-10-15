@@ -62,7 +62,7 @@
   }
   .form-inner input,
   .form-inner textarea {
-    margin-bottom: 35px;
+    margin-bottom: 40px;
   }
 }
 
@@ -245,7 +245,6 @@
     padding: 20px;
   }
   .form-inner h3 {
-    margin-bottom: 13px;
     font-size: 20px;
   }
   .errorMessage {
@@ -346,7 +345,6 @@
   .form-inner textarea {
     padding: 0px 13px;
     line-height: 36px;
-    margin-bottom: 25px;
     font-size: 18px;
     border: 1px solid #000;
   }
@@ -437,19 +435,12 @@
       font-size: 17px;
     }
   }
-  .errorMessage {
-    font-size: 13px;
-    bottom: -18px;
-    left: 3px;
-  }
   .form-inner h3 {
-    margin-bottom: 9px;
     font-size: 16px;
   }
   .errorMessage {
     font-size: 10px;
     bottom: -15px;
-    left: 3px;
   }
   .wrapper {
     width: calc(100vw - 10px);
@@ -460,6 +451,10 @@
   .timer section {
     margin: 0 9px;
   }
+  .form-inner .personName:focus + .form-field__lable, .form-inner .personName.value-exists + .form-field__lable, .form-inner .personNumber:focus + .form-field__lable, .form-inner .personNumber.value-exists + .form-field__lable, .form-inner .personMessage:focus + .form-field__lable, .form-inner .personMessage.value-exists + .form-field__lable {
+    top: -16px;
+    font-size: 13px;
+}
 }
 
 @media (max-width: 400px) {
