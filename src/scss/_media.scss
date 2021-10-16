@@ -19,6 +19,12 @@
   }
 }
 
+@media (max-width: 1320px) {
+  .button--cart {
+    border: 2px solid #fff;
+  }
+}
+
 @media (max-width: 1237px) {
   .categories {
     ul {
@@ -285,7 +291,6 @@
   }
   .button--cart {
     padding: 6px 13px;
-    border: 2px solid #fff;
   }
   .benefit {
     &-title {
@@ -456,10 +461,15 @@
   .timer section {
     margin: 0 9px;
   }
-  .form-inner .personName:focus + .form-field__lable, .form-inner .personName.value-exists + .form-field__lable, .form-inner .personNumber:focus + .form-field__lable, .form-inner .personNumber.value-exists + .form-field__lable, .form-inner .personMessage:focus + .form-field__lable, .form-inner .personMessage.value-exists + .form-field__lable {
+  .form-inner .personName:focus + .form-field__lable,
+  .form-inner .personName.value-exists + .form-field__lable,
+  .form-inner .personNumber:focus + .form-field__lable,
+  .form-inner .personNumber.value-exists + .form-field__lable,
+  .form-inner .personMessage:focus + .form-field__lable,
+  .form-inner .personMessage.value-exists + .form-field__lable {
     top: -16px;
     font-size: 13px;
-}
+  }
 }
 
 @media (max-width: 400px) {

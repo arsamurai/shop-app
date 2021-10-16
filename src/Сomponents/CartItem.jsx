@@ -46,7 +46,7 @@ function CartItem({
         <div className="cart__item-info">
           <h3>{name}</h3>
           <p>Размер: {size}</p>
-          {discount && <p>Cкидка: {discount} %</p>}
+          {discount && <p className="cart__item-discount" >Cкидка: {discount} %</p>}
         </div>
       </div>
       <div className="cart__item-right">

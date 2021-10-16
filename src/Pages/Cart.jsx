@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import emailjs from "emailjs-com";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import CartItem from "../Сomponents/CartItem";
 import {
   clearCart,
@@ -14,24 +15,10 @@ import {
 import cartEmptyImage from "../assets/img/empty-cart.png";
 import Modal from "../Сomponents/Modal";
 import { Button } from "../Сomponents";
-import { useHistory } from "react-router-dom";
+import { useLocalStorageState } from "../Redux/hook";
 import cn from "classnames";
 
 function Cart() {
-  const phoneRegExp = RegExp(
-    /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
-  );
-
-  const DisplayingErrorMessagesSchema = Yup.object().shape({
-    firstName: Yup.string()
-      .min(2, "Что-то слишком короткое имя*")
-      .max(50, "Что-то очень длинное имя*")
-      .required("Поле для ввода имени обязательно*"),
-    telNumber: Yup.string()
-      .matches(phoneRegExp, "Не верный номер телефона*")
-      .required("Поле для ввода номера телефона обязательно*"),
-  });
-
   const dispatch = useDispatch();
   const { totalCount, totalPrice, items } = useSelector(({ cart }) => cart);
 
@@ -39,9 +26,9 @@ function Cart() {
     return items[key].items[0];
   });
 
+  const [activeModal, setActiveModal] = useState(false);
   const [componentOfModal, setComponentOfModal] = useState(null);
   const history = useHistory();
-
   const formRef = useRef(null);
 
   const onClearCart = () => {
@@ -101,8 +88,6 @@ function Cart() {
     dispatch(plusCartItem(id, size));
   };
 
-  const [activeModal, setActiveModal] = React.useState(false);
-
   const sendEmail = (values) => {
     emailjs
       .send("gmail", "shop-app-order", values, "user_djun9kug7X989IkJEcFf3")
@@ -124,19 +109,20 @@ function Cart() {
         Object.values(items).map((obj) => obj.items)
       );
       pizzas.forEach(
-        (pizza) => (orderPizzas += ` ${pizza.name} : ${pizza.size}. `)
+        (pizza) => (orderPizzas += ` ${pizza.name} : ${pizza.size} размер. `)
       );
 
       const order = [values, totalCount, totalPrice, orderPizzas];
 
-      sendEmail({
-        name: order[0].firstName,
-        telNumber: order[0].telNumber,
-        message: order[0].message,
-        count: order[1],
-        price: order[2],
-        order: order[3],
-      });
+      // sendEmail({
+      //   name: order[0].firstName,
+      //   telNumber: order[0].telNumber,
+      //   message: order[0].message,
+      //   count: order[1],
+      //   price: order[2],
+      //   order: order[3],
+      // });
+      handleUpdateForm({ firstName: "", telNumber: "", message: "" });
 
       dispatch(clearCart());
       setComponentOfModal(
@@ -153,21 +139,46 @@ function Cart() {
     }
   };
 
+  //Settings for label
   const [nameExists, setNameExists] = useState(false);
   const [telNumberExists, setTelNumberExists] = useState(false);
   const [messageExists, setMessageExists] = useState(false);
 
   const checkNameExists = (e) => {
     e.target.value ? setNameExists(true) : setNameExists(false);
-  }
+    handleUpdateForm({ ...initialValues, [e.target.name]: e.target.value });
+  };
 
   const checkTelNumberExists = (e) => {
     e.target.value ? setTelNumberExists(true) : setTelNumberExists(false);
-  }
+    handleUpdateForm({ ...initialValues, [e.target.name]: e.target.value });
+  };
 
   const checkMessageExists = (e) => {
     e.target.value ? setMessageExists(true) : setMessageExists(false);
-  }
+    handleUpdateForm({ ...initialValues, [e.target.name]: e.target.value });
+  };
+
+  //Validation with Yup
+  const phoneRegExp = RegExp(
+    /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
+  );
+
+  const DisplayingErrorMessagesSchema = Yup.object().shape({
+    firstName: Yup.string()
+      .min(2, "Что-то слишком короткое имя*")
+      .max(50, "Что-то очень длинное имя*")
+      .required("Поле для ввода имени обязательно*"),
+    telNumber: Yup.string()
+      .matches(phoneRegExp, "Не верный номер телефона*")
+      .required("Поле для ввода номера телефона обязательно*"),
+  });
+
+  // LocalStorage
+  const [initialValues, handleUpdateForm] = useLocalStorageState({
+    key: "formik-data",
+    value: { firstName: "", telNumber: "", message: "" },
+  });
 
   return (
     <>
@@ -276,11 +287,7 @@ function Cart() {
                 </span>
               </div>
               <Formik
-                initialValues={{
-                  firstName: "",
-                  telNumber: "",
-                  message: "",
-                }}
+                initialValues={initialValues}
                 validationSchema={DisplayingErrorMessagesSchema}
                 onSubmit={(values) => {
                   onPayPizzas(values);
@@ -302,10 +309,12 @@ function Cart() {
                           name="firstName"
                           id="personName"
                           onBlur={(e) => checkNameExists(e)}
-                          className={cn("personName", {"value-exists": nameExists})}
+                          className={cn("personName", {
+                            "value-exists": nameExists || !!initialValues["firstName"],
+                          })}
                           placeholder="Александр Иванов"
                         />
-                        <label className="form-field__lable">Имя</label>
+                        <label className="form-field__lable">Имя...</label>
                         {errors.firstName && touched.firstName ? (
                           <div className="errorMessage">{errors.firstName}</div>
                         ) : null}
@@ -315,10 +324,14 @@ function Cart() {
                           type="tel"
                           name="telNumber"
                           onBlur={(e) => checkTelNumberExists(e)}
-                          className={cn("personNumber", {"value-exists": telNumberExists})}
+                          className={cn("personNumber", {
+                            "value-exists": telNumberExists || !!initialValues["telNumber"],
+                          })}
                           placeholder="099 99 99 999"
                         />
-                        <label className="form-field__lable">Номер телефона</label>
+                        <label className="form-field__lable">
+                          Номер телефона...
+                        </label>
                         {errors.telNumber && touched.telNumber ? (
                           <div className="errorMessage">{errors.telNumber}</div>
                         ) : null}
@@ -328,11 +341,15 @@ function Cart() {
                           type="text"
                           name="message"
                           onBlur={(e) => checkMessageExists(e)}
-                          className={cn("personMessage", {"value-exists": messageExists})}
+                          className={cn("personMessage", {
+                            "value-exists": messageExists || !!initialValues["message"],
+                          })}
                           placeholder="В свободном формате"
                           as="textarea"
                         />
-                        <label className="form-field__lable">Ваше сообщение</label>
+                        <label className="form-field__lable">
+                          Ваше сообщение...
+                        </label>
                       </div>
                     </div>
                   </Form>
